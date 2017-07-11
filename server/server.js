@@ -25,6 +25,15 @@ app.post('/todos',(req,res)=>{
     })
 });
 
+// This is used to return all the todos. Any todo app will require a get Todo as the first screen you will show the user is the list of all the todos
+app.get('/todos',(req,res)=>{
+   Todo.find().then((todos)=>{
+        res.send({todos});
+   },(e)=>{
+        res.status(400).send(e);
+   })
+});
+
 app.listen(3000,()=>{
     console.log('Started on port 3000');
 });
